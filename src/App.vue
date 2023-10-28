@@ -1,13 +1,12 @@
 <script setup>
-import WouldYouRather from './components/WouldYouRather.vue'
+import BodyMassIndexForm from './components/BodyMassIndexForm.vue'
 
 
 import { ref } from 'vue' // added this 
 
 // creating some reactive statements
-const wyrQuestion = ref('Would you rather be incredibly funny or incredibly smart?')
-const wryAnswer1 = ref('Incredibly funny')
-const wryAnswer2 = ref('Incredibly smart')
+const wryAnswer1 = ref('Height in inches')
+const wryAnswer2 = ref('Weight in pounds')
 
 // this wil store the user's answer once they made a choice
 
@@ -16,7 +15,8 @@ const userSelection = ref('')
 function updateUserSelection(userChoice) {
   userSelection.value = `Thanks! You chose ${userChoice}`
 }
-// this goes with the function choiceMade on WouldYouRather.vue
+// this may go with how to calculate the answers
+// this goes with the function choiceMade on BodyMassIndexForm.vue
 
 </script>
 
@@ -24,14 +24,13 @@ function updateUserSelection(userChoice) {
 
   <div id="app-component">
 
-  <h1>Would You Rather?</h1>
+  <h1 id="BMIC">Body Mass Index Calculator</h1>
 
-  <WouldYouRather 
-    v-bind:question="wyrQuestion"
+  <BodyMassIndexForm 
     v-bind:answer1="wryAnswer1"
     v-bind:answer2="wryAnswer2"
-    v-on:answer-selected="updateUserSelection"
-    ></WouldYouRather>
+    v-on:stats-entered="updateUserSelection"
+    ></BodyMassIndexForm>
   <!-- you can do multiple v-bind statements -->
   <!-- this will send data to the props -->
 
@@ -44,13 +43,19 @@ function updateUserSelection(userChoice) {
 
 #app-component {
   /*font-size: 3em;*/
-  background-color: aqua;
-  padding: 40px;
+  background-color: rgb(0, 255, 64);
+  padding: 50px;
 }
 /*this will change the font size for both */
 
 p {
   font-family: 'Courier New', Courier, monospace;
+}
+#BMIC {
+  color: black;
+}
+#wryAnswer1 {
+  color: black;
 }
 
 
