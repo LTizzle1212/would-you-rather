@@ -1,24 +1,27 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-defineProps({
-  question: String,
-  answer1: String,
-  answer2: String
-})
-
 const emit = defineEmits([
   'stats-entered'
 ])
-// vue wants two answers with a "-" in between
+
+defineProps({
+  statement: String,
+  height: String,
+  weight: String
+})
+
+function calculate() { // emit stat-entered
+  emit('stats-entered', height.value, weight.value)
+}
 
 
-const choice = ref('') // making the radio buttons work correctly
+const height = ref(0)
+const weight = ref(0)
 
-// function choiceMade () {
-//   // emit event to tell parent that user has made choice
-//   emit('answer-selected', choice.value)
-// }
+
+const choice = ref('') 
+
 
 watch(choice, () => {
   emit('stats-entered', choice.value)
@@ -33,34 +36,28 @@ watch(choice, () => {
   <h2> Enter your height and weight</h2>
   
 
-  <p> {{ question }} </p>
+  <p> {{ statement }} </p>
 
       <div>
-        <!-- making radio buttons-->
-        <!-- <input v-model="choice" v-bind:value="answer1" type="radio" id="answer-1"> -->
-        <label for="answer-1">{{ answer1 }}</label>
-        <input type="text">
+        <label for="height">Height in meters</label>
+        <input v-model="height" type="text">
         <!-- this value attribute is the HTML value, for what data an input stores-->
         <div>
-        <!-- <input v-model="choice" v-bind:value="answer2" type="radio" id="answer-2"> -->
-        <label for="answer-2">{{ answer2 }}</label>
-        <input type="text">
+        <label for="weight">Weight in kilograms</label>
+        <input v-model="weight" type="text"> 
+        <!-- this will add the weight -->
         </div>
      </div>
     
 </div>
 
-<button class="button">Calculate</button>
+<button v-on:click="calculate" class="button">Calculate</button> <!-- this will add the Calculate button-->
 </template>
 
 <style scoped>
-/* #wyr { */
-  
-/* } */
 
 p {
   font-family: fantasy;
 }
-
 
 </style>
