@@ -30,8 +30,6 @@ function updateUserSelection(height, weight) { // this will add up the value for
   <h1 id="BMIC">Body Mass Index Calculator</h1>
 
   <BodyMassIndexForm 
-    v-bind:height="wryHeight"
-    v-bind:weight="wryWeight"
     v-on:stats-entered="updateUserSelection"
     ></BodyMassIndexForm>
 
@@ -56,7 +54,7 @@ p {    /*this will change the font text*/
 #BMIC {
   color: black;
 }
-#wryHeight {
+#Height {
   color: black;
 }
 

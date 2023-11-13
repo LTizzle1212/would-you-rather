@@ -1,4 +1,4 @@
-<script setup>
+<!--<script setup>
 import { ref, watch } from 'vue'
 
 const emit = defineEmits([
@@ -22,7 +22,6 @@ const weight = ref(0)
 
 const choice = ref('') 
 
-
 watch(choice, () => {
   emit('stats-entered', choice.value)
 })
@@ -41,17 +40,17 @@ watch(choice, () => {
       <div>
         <label for="height">Height in meters</label>
         <input v-model="height" type="text">
-        <!-- this value attribute is the HTML value, for what data an input stores-->
+        Comment! this value attribute is the HTML value, for what data an input store
         <div>
         <label for="weight">Weight in kilograms</label>
         <input v-model="weight" type="text"> 
-        <!-- this will add the weight -->
+       Comment! this will add the weight 
         </div>
      </div>
     
 </div>
 
-<button v-on:click="calculate" class="button">Calculate</button> <!-- this will add the Calculate button-->
+<button v-on:click="calculate" class="button">Calculate</button> Comment! this will add the Calculate button
 </template>
 
 <style scoped>
@@ -60,4 +59,4 @@ p {
   font-family: fantasy;
 }
 
-</style>
+</style> -->
